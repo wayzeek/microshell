@@ -56,7 +56,7 @@ int	main(int argc, char **argv, char **envp)
 			else if (chdir(argv[1]) != 0)
 				ft_putstr_error("error : cd : cannot change directory to ", argv[1]);
 		}
-		else if (i != 0 && (argv[i] == NULL || strcmp(argv[i], ";") == 0))
+		else if (i != 0 && (argv[i] == NULL || !strcmp(argv[i], ";")))
 		{
 			if (fork() == 0)
 			{
@@ -72,7 +72,7 @@ int	main(int argc, char **argv, char **envp)
 			}
 		}
 
-		else if (i != 0 && strcmp(argv[i], "|") == 0)
+		else if (i != 0 && !strcmp(argv[i], "|"))
 		{
 			pipe(fd);
 			if (fork() == 0)
